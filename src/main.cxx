@@ -1,6 +1,10 @@
+#include <cstdlib>
 #include <iostream>
 
 #include <CLI/CLI.hpp>
+
+#include "graph.hxx"
+
 
 int main(int argc, char** argv)
 {
@@ -11,5 +15,17 @@ int main(int argc, char** argv)
 
     CLI11_PARSE(app, argc, argv);
 
-    std::cout << "Hello " << filename << "\n";
+    try {
+        auto graph = Graph::fromFilepath(filename);
+        auto output = graph.findClosestPaths();
+
+        for (const auto distance : output) {
+            std::cout << distance << '\n';
+        }
+    } catch (...) {
+        std::cout << "Couldn't parse the file. Does it exist and comply to the requirements? \n";
+        return EXIT_FAILURE;
+    }
+
+    return EXIT_SUCCESS;
 }
