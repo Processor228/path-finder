@@ -17,7 +17,7 @@ int main(int argc, char** argv)
 
     try {
         auto graph = Graph::fromFilepath(filename);
-        auto output = graph.findClosestPaths();
+        auto output = graph.findClosestDistances();
 
         for (const auto distance : output) {
             std::cout << distance << '\n';

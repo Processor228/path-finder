@@ -1,5 +1,5 @@
 
-# Path Finder - utility that finds closest paths for a given node
+# Path Finder - utility that finds closest distances for a given node
 
 ## How to build ?
 

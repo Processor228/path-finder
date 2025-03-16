@@ -34,7 +34,7 @@ Graph Graph::fromFilepath(std::string_view filepath)
 
     file >> source;
 
-    return Graph{number_of_nodes, source, adj_list};
+    return Graph{number_of_nodes, source, std::move(adj_list)};
 }
 
 /*
@@ -42,7 +42,7 @@ Graph Graph::fromFilepath(std::string_view filepath)
  * This is simple BFS, actually, we need no Djikstras with min-heaps,
  * since graph is unweighted, non-oriented.
 */
-std::vector<size_t> Graph::findClosestPaths()
+std::vector<size_t> Graph::findClosestDistances()
 {
     std::vector<size_t> dist(m_num_of_nodes, std::numeric_limits<size_t>::max());
     dist[m_source] = 0;
