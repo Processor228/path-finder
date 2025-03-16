@@ -15,7 +15,7 @@ mkdir build && cd build
 
 cmake .. && cmake --build .
 
-ctest
+cd tests/ && ctest
 ```
 
 ## What's inside?
